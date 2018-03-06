@@ -25,3 +25,4 @@ Route::get('/staff', function () {
 });
 
 Route::get('/showroom',  'ArtController@index');
+Route::get('/showroom/page={page_no}',  'ArtController@page_show');

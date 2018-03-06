@@ -8,8 +8,17 @@
   <div class="row top_buffer">
   @foreach ($images as $image)
   	<div class="col-sm-12 col-md-6 col-lg-4 showroomImage">
-      <img src='{{ $image->image_path }}' class="img-fluid">
+      <img src='\{{ $image->image_path }}' class="img-fluid">
     </div>
   @endforeach
 </div>
+<nav aria-label="Page navigation example" >
+	<div>
+		<ul class="pagination justify-content-center" >
+			@for ($i = 1; $i<=$page_count;$i++)
+				<li class="page-item"><a class="page-link" href="/showroom/page={{$i}}">{{$i}}</a></li>
+			@endfor
+		</ul>
+	</div>
+</nav>
 @endsection

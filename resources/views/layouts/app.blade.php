@@ -3,6 +3,9 @@
 <head>
 	<title>TEST</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" href="{{ URL::asset('css/websitecss.css') }}">
+	<link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
 	<link rel="stylesheet" type="text/css" href="css/websitecss.css">
 
 	<link href="https://fonts.googleapis.com/css?family=Poiret+One|Raleway" rel="stylesheet">
