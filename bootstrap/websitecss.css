@@ -1,5 +1,6 @@
 body{
-	background-color: #f7f7f7;
+/*	background-color: #f7f7f7;*/
+	background-color: red;
 	font-size: 20px;
 	font-family: 'Raleway', sans-serif;
 }
@@ -26,6 +27,7 @@ h2{
 	letter-spacing: 2px;
 	position: relative;
 	margin-left: calc(100% - 280px);
+	color: red;
 /*	padding-left: 1000px;*/
 /*	margin-left: 500px;*/
 }
@@ -56,4 +58,13 @@ h2{
 
 .spacer{
 	height: 30px;
+}
+
+.showroomImage{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.top_buffer{
+	margin-top:20px;
 }

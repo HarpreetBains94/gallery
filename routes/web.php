@@ -24,6 +24,4 @@ Route::get('/staff', function () {
     return view('staff');
 });
 
-Route::get('/showroom', function () {
-    return view('showroom');
-});
+Route::get('/showroom',  'ArtController@index');
