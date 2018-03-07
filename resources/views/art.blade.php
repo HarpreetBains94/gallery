@@ -1,16 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
+<div class='spacer'></div>
+<h2>{{$art[0]->title}}</h2>
+<div class='spacer'></div>
 <div class="container">
 	<div class="row top_buffer">
-		<div class="col-sm-12 col-md-8 col-lg-8">
+		<div class="col-sm-12 col-md-12 col-lg-9">
 				<img src='\{{ $art[0]->image_path }}' id='art-show'>
-				<div>{{$art[0]->title}}</div>
-				<div>{{$art[0]->price}}</div>
-				<div>{{$art[0]->dimensions}}</div>
-				<div>{{$art[0]->medium}}</div>
-				<div>{{$art[0]->description}}</div>
-				<div>{{$artist[0]->name}}</div>
+				<div class='spacer'></div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-3">
+			<div>{{$art[0]->description}}</div>
+			<div class='spacer'></div>
+			<div>Artist: <a href="/artist/id={{$artist[0]->id}}">{{$artist[0]->name}}</a></div>
+			<div>Price: £{{$art[0]->price}}</div>
+			<div>Dimensions: {{$art[0]->dimensions}} (cm)</div>
+			<div>Medium: {{$art[0]->medium}}</div>
 		</div>
 	</div>
 </div>

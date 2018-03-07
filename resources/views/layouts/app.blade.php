@@ -13,7 +13,7 @@
 <body>
 
 <div id="welcome_div">
-	<h1><a class="nav-link" id="welcome" href="?PageName=home">Gallery</a></h1>
+	<h1><a class="nav-link" id="welcome" href="\">Gallery</a></h1>
 </div>
 
 <nav class="navbar navbar-expand-md navbar-light">
