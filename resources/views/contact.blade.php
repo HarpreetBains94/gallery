@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="spacer"></div>
-<h2>Contact Us</h2>
+<h2 class='heading'>Contact Us</h2>
 <div class="spacer"></div>
 <form>
   <div class="form-group">
