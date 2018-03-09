@@ -20,12 +20,21 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/staff', function () {
-    return view('staff');
-});
+Route::get('/staff', 'StaffController@index');
+Route::post('/staff/submit', 'StaffController@log_in');
 
 Route::get('/showroom',  'ArtController@index');
 Route::get('/showroom/page={page_no}',  'ArtController@page_show');
+
 Route::get('/art_view/id={art_id}',  'ArtController@art_show');
+
 Route::get('/artist/id={artist_id}',  'ArtistController@index');
 Route::get('/artist/id={artist_id}/page={page_no}',  'ArtistController@page_show');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
