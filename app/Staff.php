@@ -2,13 +2,14 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Staff extends Authenticatable
 {
     use Notifiable;
+
+    protected $guard = 'staff';
 
     /**
      * The attributes that are mass assignable.
@@ -28,4 +29,3 @@ class Staff extends Authenticatable
         'password', 'remember_token',
     ];
 }
-
