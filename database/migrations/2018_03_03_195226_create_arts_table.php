@@ -16,7 +16,8 @@ class CreateArtsTable extends Migration
         Schema::create('arts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->integer('artist_id');
+            $table->integer('artist_id')->unsigned();
+            $table->foreign('artist_id')->references('id')->on('artists');
             $table->string('image_path');
             $table->string('medium');
             $table->string('dimensions');
@@ -24,6 +25,7 @@ class CreateArtsTable extends Migration
             $table->boolean('on_sale')->default(false);
             $table->date('creation_date');
             $table->text('description');
+            $table->engine = 'InnoDB';
         });
     }
 

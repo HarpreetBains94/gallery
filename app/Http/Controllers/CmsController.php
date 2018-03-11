@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class StaffController extends Controller
+class CmsController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -13,6 +13,6 @@ class StaffController extends Controller
 
     public function index(){
 
-    	return view('staff');
+    	return view('cms');
     }
 }
