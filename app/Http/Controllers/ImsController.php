@@ -31,7 +31,8 @@ class ImsController extends Controller
     }
 
     public function edit_art(){
-    	return view('ims.ims_art_edit');
+        $arts = \DB::table('arts')->orderby('id')->get();
+    	return view('ims.ims_art_edit', compact('arts'));
     }
 
     public function remove_art(){
@@ -80,5 +81,15 @@ class ImsController extends Controller
 
     	return redirect()->back()->with('message', 'Art added successfully');
     	
+    }
+
+    public function update_art($art_id){
+        $datas = \DB::table('artists')->get();
+        $artists = [];
+        foreach ($datas as $data) {
+            $artists[$data->id] = $data->name;
+        }
+        $art = \DB::table('arts')->where('id', $art_id)->get();
+        return view('ims.ims_art_add', compact('art','artists'));
     }
 }

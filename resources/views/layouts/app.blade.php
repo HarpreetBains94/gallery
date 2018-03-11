@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
 	<link rel="stylesheet" type="text/css" href="css/websitecss.css">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<link href="https://fonts.googleapis.com/css?family=Poiret+One|Raleway" rel="stylesheet">
 
@@ -16,15 +18,13 @@
 </head>
 <body>
 
-<div id="welcome_div">
-	<h1><a class="nav-link" id="welcome" href="\">Gallery</a></h1>
-</div>
-
 @include('components.navbar')
+
 
 <div id="content">
 	@yield('content')
 </div>
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -41,5 +41,6 @@
 
 
 </script>
+
 </body>
 </html>

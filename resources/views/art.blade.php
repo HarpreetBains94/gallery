@@ -7,7 +7,7 @@
 <div class="container">
 	<div class="row top_buffer">
 		<div class="col-sm-12 col-md-12 col-lg-7">
-				<img src='\{{ $art[0]->image_path }}' id='art-show' class="img-fluid">
+				<img src='\storage\media\test_images\{{ $art[0]->image_path }}' id='art-show' class="img-fluid">
 				<div class='spacer'></div>
 		</div>
 		<div class="col-sm-12 col-md-12 col-lg-5">

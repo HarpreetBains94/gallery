@@ -50,3 +50,5 @@ Route::get('/ims/art/add', 'ImsController@add_art');
 Route::get('/ims/art/edit', 'ImsController@edit_art');
 Route::get('/ims/art/remove', 'ImsController@remove_art');
 Route::post('/ims/art/store','ImsController@art_post');
+//change
+Route::get('/ims/art/edit/id={art_id}',  'ImsController@update_art');

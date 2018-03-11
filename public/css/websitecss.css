@@ -72,3 +72,10 @@ body{
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
+
+#welcome-jumbo{
+	height: 70vh;
+}	
+#lead{
+	 color: white;
+}
