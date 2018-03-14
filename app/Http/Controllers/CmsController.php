@@ -12,7 +12,14 @@ class CmsController extends Controller
 
 
     public function index(){
+        return view('blog');
+    }
 
-    	return view('cms');
+    public function add_event(){
+    	return view('cms.add_event');
+    }
+
+    public function edit_advert(){
+    	return view('cms.banner_add');
     }
 }

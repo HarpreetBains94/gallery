@@ -1,4 +1,4 @@
-<div id="" style="overflow-x:scroll; height:70vh;">
+<div id="" style="height:60vh;">
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -27,8 +27,8 @@
         </td>
         <td>
           <a href="/ims/art/remove/id={{$art->id}}">
-            <button type="button" class="btn btn-danger">
-              <span class="glyphicon glyphicon-search"></span> Delete
+            <button type="button" class="btn btn-danger" data-toggle="confirmation">
+               Delete
             </button>
           </a>
         </td>
@@ -40,7 +40,7 @@
         <td>{{$art->price}}</td>
         <td>{{$art->on_sale}}</td>
         <td>{{$art->creation_date}}</td>
-        <td><div style="height:150px; overflow-x:hidden">{{$art->description}}</div></td>
+        <td><div style="height:100px; overflow-x:hidden">{{$art->description}}</div></td>
       </tr>
     @endforeach
   </tbody>

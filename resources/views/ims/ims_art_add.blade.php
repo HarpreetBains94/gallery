@@ -2,7 +2,12 @@
 
 @section('content')
   <div class="spacer"></div>
+  @if(isset($art))
+  <h2 class="heading">IMS Edit Art</h2>
+  @endif
+  @if(!isset($art))
   <h2 class="heading">IMS Add Art</h2>
+  @endif
   <div class="spacer"></div>
 	@if(session()->has('message'))
 	<div class="alert alert-success">

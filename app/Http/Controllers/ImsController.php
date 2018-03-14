@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
 use App\Art;
+use App\Artist;
+use Auth;
 
 class ImsController extends Controller
 {
@@ -31,8 +33,16 @@ class ImsController extends Controller
     }
 
     public function edit_art(){
-        $arts = \DB::table('arts')->orderby('id')->get();
-    	return view('ims.ims_art_edit', compact('arts'));
+        $arts = \DB::table('arts')->orderby('id')->take(5)->get();
+        $page_count = ceil((\DB::table('arts')->get()->count())/5);
+    	return view('ims.ims_art_edit', compact('arts', 'page_count'));
+    }
+
+    public function edit_art_page_show($page_no){
+        $skip_no = ($page_no - 1) * 5;
+        $arts = \DB::table('arts')->orderBy('id')->skip($skip_no)->take(5)->get();
+        $page_count = ceil((\DB::table('arts')->get()->count())/5);
+        return view('ims.ims_art_edit', compact('arts', 'page_no', 'page_count'));
     }
 
     public function remove_art(){
@@ -91,5 +101,73 @@ class ImsController extends Controller
         }
         $art = \DB::table('arts')->where('id', $art_id)->get();
         return view('ims.ims_art_add', compact('art','artists'));
+    }
+
+    public function logout(){
+        Auth::logout();
+
+        return view('welcome');
+    }
+
+
+
+
+
+    public function add_artist(){
+        return view('ims.ims_artist_add');
+    }
+
+    public function edit_artist(){
+        $artists = \DB::table('artists')->orderby('id')->take(4)->get();
+        $page_count = ceil((\DB::table('artists')->get()->count())/4);
+        return view('ims.ims_artist_edit', compact('artists', 'page_count'));
+    }
+
+    public function edit_artist_page_show($page_no){
+        $skip_no = ($page_no - 1) * 4;
+        $artists = \DB::table('artists')->orderBy('id')->skip($skip_no)->take(4)->get();
+        $page_count = ceil((\DB::table('artists')->get()->count())/4);
+        return view('ims.ims_artist_edit', compact('artists', 'page_no', 'page_count'));
+    }
+
+    public function artist_post(Request $request){
+            $this->validate($request, [
+            'name' => 'required',
+            'image' => 'image|required|max:1999',
+            'bio' => 'required',
+
+        ]);
+
+        //creating new filename for storage.
+        $fileNameWithEx =  $request->file('image')->getClientOriginalName();
+
+        $fileName = pathinfo($fileNameWithEx, PATHINFO_FILENAME);
+
+        $extension = $request->file('image')->getClientOriginalExtension();
+
+        $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+
+        //storing file.
+
+        $path = $request->file('image')->storeAs('/public/media/artist_images', $fileNameToStore);
+
+        $artist = new Artist;
+        $artist->name = $request->input('name');
+        $artist->image_path = $fileNameToStore;
+        $artist->bio = $request->input('bio');
+
+        $artist->save();
+
+        return redirect()->back()->with('message', 'Art added successfully');
+        
+    }
+
+    public function artist_update(){
+        return 123;
+    }
+
+    public function update_artist($artist_id){
+        $artist = \DB::table('artists')->where('id', $artist_id)->get();
+        return view('ims.ims_artist_add', compact('artist'));
     }
 }

@@ -15,6 +15,12 @@
 			<div>Price: £{{number_format($art[0]->price, 2, '.', '')}}</div>
 			<div>Dimensions: {{$art[0]->dimensions}} (cm)</div>
 			<div>Medium: {{$art[0]->medium}}</div>
+			<div class="spacer"></div>
+			{!!Form::open(['action' => 'ImsController@artist_post', 'method' => 'POST', 'enctype' => 'multipart/form-data'])!!}
+    			@include('components.form.appointment_form')
+  			{!!Form::close()!!}
+
+			
 		</div>
 		<div class="col-sm-12 col-md-12 col-lg-12">
 			<div class='spacer'></div>

@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+<?php $base_url="/showroom/" ?>
 <base href="/showroom/" />
 <div class="spacer"></div>
 	<h2 class='heading'>Showroom</h2>
