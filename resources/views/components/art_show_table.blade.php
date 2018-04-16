@@ -19,7 +19,7 @@
     @foreach ($arts as $art)
       <tr>
         <td>
-          <a href="/ims/art/edit/id={{$art->id}}">
+          <a href="/arts/{{$art->id}}/edit">
             <button type="button" class="btn btn-info">
               <span class="glyphicon glyphicon-search"></span> Edit
             </button>

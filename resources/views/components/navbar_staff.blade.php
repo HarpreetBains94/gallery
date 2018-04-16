@@ -2,7 +2,10 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark elegant-color-dark">
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="/">The Snow Hill Gallery</a>
+    <a class="navbar-brand" href="/">
+        <img src="\storage\media\snow-hill-logo-white-fill-transparant.png" height="20" width="30">
+        The Snow Hill Gallery        
+    </a>
 
     <!-- Collapse button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
@@ -16,7 +19,7 @@
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/logout">Log Out
+                <a class="nav-link" href="/logout" name="logout">Log Out
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
@@ -26,7 +29,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/showroom">Showroom</a>
+                <a class="nav-link" href="/showroom/page=1">Showroom</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/events">Events</a>
@@ -37,8 +40,8 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">IMS</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <h6 class="dropdown-header">Art</h6>
-                    <a class="dropdown-item" href="/ims/art/add">Add art</a>
-                    <a class="dropdown-item" href="/ims/art/edit">Edit/Remove art</a>
+                    <a class="dropdown-item" href="/arts/create">Add art</a>
+                    <a class="dropdown-item" href="/arts/index">Edit/Remove art</a>
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header">Artists</h6>
                     <a class="dropdown-item" href="/ims/artist/add">Add artist</a>

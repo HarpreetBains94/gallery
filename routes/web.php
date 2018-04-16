@@ -20,6 +20,10 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::resource('arts', 'ArtController');
+Route::resource('arts/index/page={page_no}', 'ArtController');
+Route::resource('arts/update/id={id}', 'ArtController');
+
 Route::get('/staff', 'StaffController@index');
 Route::post('/staff/submit', 'StaffController@log_in');
 
@@ -53,8 +57,8 @@ Route::get('/ims/art/edit', 'ImsController@edit_art');
 Route::get('/ims/art/edit/page={page_no}', 'ImsController@edit_art_page_show');
 Route::get('/ims/art/remove', 'ImsController@remove_art');
 Route::post('/ims/art/store','ImsController@art_post');
+Route::put('/ims/art/edit/id={art_id}/update','ImsController@update_art_success');
 //change
-Route::get('/ims/art/edit/id={art_id}',  'ImsController@update_art');
 
 Route::get('/ims/artist/add', 'ImsController@add_artist');
 Route::get('/ims/artist/edit', 'ImsController@edit_artist');

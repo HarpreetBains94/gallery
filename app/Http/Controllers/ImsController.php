@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
+use App\Http\Reqests;
 use App\Art;
 use App\Artist;
 use Auth;
@@ -93,6 +94,10 @@ class ImsController extends Controller
     	
     }
 
+    public function update_art_success(Request $request, $id){
+        return 123;
+    }
+
     public function update_art($art_id){
         $datas = \DB::table('artists')->get();
         $artists = [];
@@ -158,7 +163,7 @@ class ImsController extends Controller
 
         $artist->save();
 
-        return redirect()->back()->with('message', 'Art added successfully');
+        return redirect()->back()->with('message', 'Artist added successfully');
         
     }
 

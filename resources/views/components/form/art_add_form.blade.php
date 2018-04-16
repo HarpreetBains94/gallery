@@ -34,6 +34,10 @@
 				{{Form::label('medium', 'Medium')}}
 				{{Form::select('medium', array('painting' => 'Painting', 'photography' => 'Photography', 'sculpture' => 'Sculpture'), $art[0]->medium, ['class' => 'form-control'])}}
 			</div>
+			<div class='form-group col-sm-12 col-md-6 col-lg-6'>
+				{{Form::label('id', 'ID')}}
+				{{Form::text('id', $art[0]->id, ['class' => 'form-control', 'readonly' => 'true'])}}
+			</div>
 		</div>
 		<div class='row'>
 			<div>

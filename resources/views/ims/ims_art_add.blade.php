@@ -14,7 +14,14 @@
 	    {{ session()->get('message') }}
 	</div>
 	@endif 
-  {!!Form::open(['action' => 'ImsController@art_post', 'method' => 'POST', 'enctype' => 'multipart/form-data'])!!}
-  	@include('components.form.art_add_form')
-  {!!Form::close()!!}
+  @if(!isset($art))
+    {!!Form::open(['action' => 'ImsController@art_post', 'method' => 'POST', 'enctype' => 'multipart/form-data'])!!}
+    	@include('components.form.art_add_form')
+    {!!Form::close()!!}
+  @endif
+<!--   @if(isset($art))
+    {!!Form::open(['action' => 'ArtController@', 'method' => 'PUT', 'enctype' => 'multipart/form-data'])!!}
+      @include('components.form.art_add_form')
+    {!!Form::close()!!}
+  @endif -->
 @endsection

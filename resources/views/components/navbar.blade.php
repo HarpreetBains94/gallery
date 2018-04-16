@@ -37,7 +37,10 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light grey lighten-2">
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="/">The Snow Hill Gallery</a>
+    <a class="navbar-brand" href="/">
+    	<img src="\storage\media\snow-hill-logo-black-transparant.png" height="20" width="30">
+    	The Snow Hill Gallery
+	</a>
 
     <!-- Collapse button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
@@ -56,7 +59,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/showroom">Showroom</a>
+                <a class="nav-link" href="/showroom/page=1">Showroom</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/events">Events</a>

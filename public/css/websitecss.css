@@ -68,6 +68,10 @@ body{
 	height: 30px;
 }
 
+.spacer_footer{
+	height: 100px;
+}
+
 .showroomImage{
 	margin-top: 15px;
 	margin-bottom: 15px;
@@ -75,11 +79,26 @@ body{
 
 #welcome-jumbo{
 	height: 40vh;
+	background-image: url("http://pawprintnews.com/wp-content/uploads/2016/09/Art.jpg");
+	background-size: cover;
+	font-size: 3em !important;
+	color: white !important;
+  	text-shadow: 0px 10px 3px rgba(0,0,0,0.5),
+                 6px 12px 3px rgba(0,0,0,0.5),
+                 -6px 12px 3px rgba(0,0,0,0.5) !important;
 }	
-#lead{
+.lead{
 	 color: white;
 }
+.highlight{
+	display: inline;
+    background-color: black !important;
+    color: white;
+}
 
+#jumbo_div{
+	background-color: rgba(0,0,0,0.5);
+}
 
 
 
