@@ -6,11 +6,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controller\Controllers;
+use App\Art;
+use App\Artist;
+use Auth;
+use Image;
 
 class ArtController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth', ['only'=>'']);
+        $this->middleware('auth', ['except'=>['page_show', 'art_show']]);
     }
 
 
@@ -60,22 +64,20 @@ class ArtController extends Controller
         ]);
 
         //creating new filename for storage.
-        $fileNameWithEx =  $request->file('image')->getClientOriginalName();
 
-        $fileName = pathinfo($fileNameWithEx, PATHINFO_FILENAME);
 
-        $extension = $request->file('image')->getClientOriginalExtension();
 
-        $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+        $image = $request->file('image');
+        $fileName = time() . '.' . $image->getClientOriginalExtension();
+        $location = public_path('storage/media/test_images/' . $fileName);
+        Image::make($image)->save($location);
 
         //storing file.
-
-        $path = $request->file('image')->storeAs('/public/media/test_images', $fileNameToStore);
 
         $art = new Art;
         $art->title = $request->input('title');
         $art->artist_id = $request->input('artist');
-        $art->image_path = $fileNameToStore;
+        $art->image_path = $fileName;
         $art->medium = $request->input('medium');
         $art->dimensions = $request->input('dimensions');
         $art->price = $request->input('price');
@@ -100,7 +102,46 @@ class ArtController extends Controller
     }
 
     public function update(Request $request, $id){
-        return 123;
+        $this->validate($request, [
+            'title' => 'required',
+            'artist' => 'required',
+            'price' => 'required',
+            'dimensions' => 'required',
+            'date' => 'required',
+            'image' => 'image|required|max:1999',
+            'description' => 'required',
+            'medium' => 'required'
+
+        ]);
+
+        //creating new filename for storage.
+
+
+
+        $image = $request->file('image');
+        $fileName = time() . '.' . $image->getClientOriginalExtension();
+        $location = public_path('storage/media/test_images/' . $fileName);
+        Image::make($image)->save($location);
+
+        //storing file.
+
+        $art = Art::find($id);
+        $art->title = $request->input('title');
+        $art->artist_id = $request->input('artist');
+        $art->image_path = $fileName;
+        $art->medium = $request->input('medium');
+        $art->dimensions = $request->input('dimensions');
+        $art->price = $request->input('price');
+        $art->creation_date = $request->input('date');
+        $art->creation_date->format('Y-m-d');
+        $art->description = $request->input('description');
+        $art->on_sale = 0;
+
+        $art->save();
+
+        $art = \DB::table('arts')->where('id', $id)->get();
+        $artist = \DB::table('artists')->where('id', $art[0]->artist_id)->get();
+        return view('art', compact('art','artist'));
     }
 
     public function edit($art_id){
@@ -111,5 +152,11 @@ class ArtController extends Controller
         }
         $art = \DB::table('arts')->where('id', $art_id)->get();
         return view('ims.ims_art_add', compact('art','artists'));
+    }
+
+    public function destroy($id){
+        $art = Art::find($id);
+        $art->delete();
+        return redirect('arts/index/page=1');
     }
 }

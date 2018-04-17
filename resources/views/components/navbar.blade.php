@@ -32,7 +32,7 @@
 	  </div>
 	</div>
 </nav> -->
-
+{{ Request::is('/')? 'active':'' }}
 <!--Navbar-->
 <nav class="navbar fixed-top navbar-expand-lg navbar-light grey lighten-2">
 
@@ -54,9 +54,7 @@
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/">Home
-                    <span class="sr-only">(current)</span>
-                </a>
+                <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/showroom/page=1">Showroom</a>

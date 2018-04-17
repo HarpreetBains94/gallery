@@ -20,6 +20,12 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::get('/showroom',  'ArtController@index');
+Route::get('/showroom/page={page_no}',  'ArtController@page_show');
+Route::get('/art_view/id={art_id}',  'ArtController@art_show');
+Route::get('/events',  'BlogController@index');
+
+
 Route::resource('arts', 'ArtController');
 Route::resource('arts/index/page={page_no}', 'ArtController');
 Route::resource('arts/update/id={id}', 'ArtController');
@@ -27,15 +33,13 @@ Route::resource('arts/update/id={id}', 'ArtController');
 Route::get('/staff', 'StaffController@index');
 Route::post('/staff/submit', 'StaffController@log_in');
 
-Route::get('/showroom',  'ArtController@index');
-Route::get('/showroom/page={page_no}',  'ArtController@page_show');
 
-Route::get('/art_view/id={art_id}',  'ArtController@art_show');
+
+
 
 Route::get('/artist/id={artist_id}',  'ArtistController@index');
 Route::get('/artist/id={artist_id}/page={page_no}',  'ArtistController@page_show');
 
-Route::get('/events',  'BlogController@index');
 
 Auth::routes();
 

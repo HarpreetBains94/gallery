@@ -26,11 +26,11 @@
           </a>
         </td>
         <td>
-          <a href="/ims/art/remove/id={{$art->id}}">
-            <button type="button" class="btn btn-danger" data-toggle="confirmation">
-               Delete
-            </button>
-          </a>
+          {!! Form::open(['route' => ['arts.destroy', $art->id], 'method' => 'DELETE']) !!}
+
+            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+
+          {!! Form::close() !!}
         </td>
         <td>{{$art->title}}</td>
         <td>{{\DB::table('artists')->where('id', $art->artist_id)->get()[0]->name}}</td>
