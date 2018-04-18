@@ -41,11 +41,11 @@
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <h6 class="dropdown-header">Art</h6>
                     <a class="dropdown-item" href="/arts/create">Add art</a>
-                    <a class="dropdown-item" href="/arts/index">Edit/Remove art</a>
+                    <a class="dropdown-item" href="/arts/page=1">Edit/Remove art</a>
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header">Artists</h6>
-                    <a class="dropdown-item" href="/ims/artist/add">Add artist</a>
-                    <a class="dropdown-item" href="/ims/artist/edit">Edit/Remove artist</a>
+                    <a class="dropdown-item" href="/artists/create">Add artist</a>
+                    <a class="dropdown-item" href="/artists/page=1">Edit/Remove artist</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

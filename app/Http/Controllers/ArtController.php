@@ -157,6 +157,6 @@ class ArtController extends Controller
     public function destroy($id){
         $art = Art::find($id);
         $art->delete();
-        return redirect('arts/index/page=1');
+        return redirect('arts/page=1');
     }
 }

@@ -17,7 +17,7 @@
 
   @if(isset($artist))
 
-  {!!Form::open(['action' => ['ImsController@update_artist', $artist[0]->id], 'method' => 'PATCH', 'enctype' => 'multipart/form-data'])!!}
+  {!!Form::open(array('route' => ['artists.update', $artist[0]->id], 'files' => true, 'method' => 'PUT'))!!}
     @include('components.form.artist_add_form')
   {!!Form::close()!!}
 
@@ -25,7 +25,7 @@
 
   @if(!isset($artist))
 
-  {!!Form::open(['action' => 'ImsController@artist_post', 'method' => 'POST', 'enctype' => 'multipart/form-data'])!!}
+  {!!Form::open(array('route' => 'artists.store', 'files' => true))!!}
     @include('components.form.artist_add_form')
   {!!Form::close()!!}
 

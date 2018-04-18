@@ -13,18 +13,18 @@
     @foreach ($artists as $artist)
       <tr>
         <td>
-          <a href="/ims/artist/edit/id={{$artist->id}}">
+          <a href="/artists/{{$artist->id}}/edit">
             <button type="button" class="btn btn-info">
               <span class="glyphicon glyphicon-search"></span> Edit
             </button>
           </a>
         </td>
         <td>
-          <a href="/ims/artist/remove/id={{$artist->id}}">
-            <button type="button" class="btn btn-danger" onclick="confirmation()">
-              <span class="glyphicon glyphicon-search"></span> Delete
-            </button>
-          </a>
+          {!! Form::open(['route' => ['artists.destroy', $artist->id], 'method' => 'DELETE']) !!}
+
+            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+
+          {!! Form::close() !!}
         </td>
         <td>{{$artist->name}}</td>
         <td><img src='\storage\media\artist_images\{{ $artist->image_path }}' class="img-fluid"></td>

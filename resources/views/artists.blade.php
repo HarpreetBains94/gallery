@@ -2,7 +2,7 @@
 
 @section('content')
 <?php $id = $artist[0]->id ?>
-<?php $base_url="/artist/id=$id/" ?>
+<?php $base_url="/artists/id=$id/" ?>
 <base href="/artist/id={{$artist[0]->id}}/" />
 	<div class="spacer"></div>
 		<h2 class='heading'>{{$artist[0]->name}}</h2>

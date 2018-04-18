@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<?php $base_url="/ims/artist/edit/" ?>
+<?php $base_url="/artists/" ?>
   <div class="spacer"></div>
   <h2 class="heading">IMS Edit Artist</h2>
   <div class="spacer"></div>

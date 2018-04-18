@@ -11,7 +11,7 @@
 				<div class='spacer'></div>
 		</div>
 		<div class="col-sm-12 col-md-12 col-lg-5">
-			<div>Artist: <a href="/artist/id={{$artist[0]->id}}">{{$artist[0]->name}}</a></div>
+			<div>Artist: <a href="/artists/id={{$artist[0]->id}}/page=1">{{$artist[0]->name}}</a></div>
 			<div>Price: £{{number_format($art[0]->price, 2, '.', '')}}</div>
 			<div>Dimensions: {{$art[0]->dimensions}} (cm)</div>
 			<div>Medium: {{$art[0]->medium}}</div>

@@ -24,11 +24,15 @@ Route::get('/showroom',  'ArtController@index');
 Route::get('/showroom/page={page_no}',  'ArtController@page_show');
 Route::get('/art_view/id={art_id}',  'ArtController@art_show');
 Route::get('/events',  'BlogController@index');
+Route::get('/artists/id={id}/page={page_no}', 'ArtistController@show');
+Route::get('/artists/page={page_no}', 'ArtistController@index');
+Route::get('/arts/page={page_no}', 'ArtController@index');
 
-
+Route::resource('appointments', 'AppointmentController');
 Route::resource('arts', 'ArtController');
-Route::resource('arts/index/page={page_no}', 'ArtController');
-Route::resource('arts/update/id={id}', 'ArtController');
+// Route::resource('arts/index/', 'ArtController');
+// Route::resource('arts/update/', 'ArtController');
+Route::resource('artists', 'ArtistController');
 
 Route::get('/staff', 'StaffController@index');
 Route::post('/staff/submit', 'StaffController@log_in');
