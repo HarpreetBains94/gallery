@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Http\Controller\Controllers;
+use App\Event;
 
 class EventController extends Controller
 {
@@ -13,7 +16,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        return 123;
+        return view('event.index');
     }
 
     /**
@@ -23,7 +26,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('event.add');
     }
 
     /**
@@ -34,7 +37,24 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'price' => 'required',
+            'date' => 'required',
+            'description' => 'required',
+
+        ]);
+
+        $event = new Event;
+        $event->title = $request->input('title');
+        $event->price = $request->input('price');
+        $event->date = $request->input('date');
+        $event->date->format('Y-m-d');
+        $event->description = $request->input('description');
+
+        $event->save();
+
+        return redirect()->back()->with('message', 'Event added successfully');
     }
 
     /**
@@ -45,7 +65,7 @@ class EventController extends Controller
      */
     public function show(Appointment $appointment)
     {
-        //
+        return 'show';
     }
 
     /**
@@ -56,7 +76,7 @@ class EventController extends Controller
      */
     public function edit(Appointment $appointment)
     {
-        //
+        return 'edit';
     }
 
     /**
@@ -68,7 +88,7 @@ class EventController extends Controller
      */
     public function update(Request $request, Appointment $appointment)
     {
-        //
+        return 'update';
     }
 
     /**
@@ -79,6 +99,6 @@ class EventController extends Controller
      */
     public function destroy(Appointment $appointment)
     {
-        //
+        return 'destroy';
     }
 }

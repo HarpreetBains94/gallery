@@ -28,6 +28,7 @@ Route::get('/artists/id={id}/page={page_no}', 'ArtistController@show');
 Route::get('/artists/page={page_no}', 'ArtistController@index');
 Route::get('/arts/page={page_no}', 'ArtController@index');
 
+Route::resource('events', 'EventController');
 Route::resource('appointments', 'AppointmentController');
 Route::resource('arts', 'ArtController');
 // Route::resource('arts/index/', 'ArtController');

@@ -19,8 +19,6 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->double('price', 10, 2);
             $table->date('date');
-            $table->integer('artist_id')->unsigned();
-            $table->foreign('artist_id')->references('id')->on('artists');
             $table->timestamps();
         });
     }
