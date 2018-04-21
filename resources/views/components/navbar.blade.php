@@ -60,7 +60,7 @@
                 <a class="nav-link" href="/showroom/page=1">Showroom</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/events">Events</a>
+                <a class="nav-link" href="/events/page=1">Events</a>
             </li>
 
             <!-- Dropdown -->

@@ -6,17 +6,31 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controller\Controllers;
 use App\Event;
+use Auth;
 
 class EventController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth', ['except'=>['index','show']]);
+    }
 	    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($page_no)
     {
-        return view('event.index');
+        $skip_no = 0;
+        if(is_numeric($page_no)){
+            $skip_no = ($page_no - 1) * 5;
+        }
+        $page_count = ceil((\DB::table('events')->get()->count())/5);
+        $events = \DB::table('events')->orderBy('id')->skip($skip_no)->take(5)->get();
+        if(Auth::check()){
+            return view('event.edit', compact('events', 'page_no', 'page_count'));
+        }
+        return view('event.index', compact('events', 'page_no', 'page_count'));
     }
 
     /**
@@ -63,9 +77,10 @@ class EventController extends Controller
      * @param  \App\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function show(Appointment $appointment)
+    public function show($event_id)
     {
-        return 'show';
+        $event = Event::find($event_id);
+        return view('event.show', compact('event'));
     }
 
     /**
@@ -74,9 +89,10 @@ class EventController extends Controller
      * @param  \App\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Appointment $appointment)
+    public function edit($event_id)
     {
-        return 'edit';
+        $event = Event::find($event_id);
+        return view('event.add', compact('event'));
     }
 
     /**
@@ -86,9 +102,26 @@ class EventController extends Controller
      * @param  \App\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Appointment $appointment)
+    public function update(Request $request, Event $event)
     {
-        return 'update';
+        $this->validate($request, [
+            'title' => 'required',
+            'price' => 'required',
+            'date' => 'required',
+            'description' => 'required',
+
+        ]);
+
+        
+        $event->title = $request->input('title');
+        $event->price = $request->input('price');
+        $event->date = $request->input('date');
+        $event->date->format('Y-m-d');
+        $event->description = $request->input('description');
+
+        $event->save();
+
+        return redirect()->back()->with('message', 'Event updated successfully');
     }
 
     /**
@@ -97,8 +130,10 @@ class EventController extends Controller
      * @param  \App\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Appointment $appointment)
+    public function destroy($event_id)
     {
-        return 'destroy';
+        $event = Event::find($event_id);
+        $event->delete();
+        return view('event.edit');
     }
 }

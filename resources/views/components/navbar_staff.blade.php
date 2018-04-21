@@ -32,7 +32,7 @@
                 <a class="nav-link" href="/showroom/page=1">Showroom</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/events">Events</a>
+                <a class="nav-link" href="/events/page=1">Events</a>
             </li>
 
             <!-- Dropdown -->
@@ -46,14 +46,16 @@
                     <h6 class="dropdown-header">Artists</h6>
                     <a class="dropdown-item" href="/artists/create">Add artist</a>
                     <a class="dropdown-item" href="/artists/page=1">Edit/Remove artist</a>
+                    <h6 class="dropdown-header">Appointments</h6>
+                    <a class="dropdown-item" href="/appointments/page=1">Edit/Remove appointments</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CMS</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <h6 class="dropdown-header">Events</h6>
-                    <a class="dropdown-item" href="/cms/event/add">Add event</a>
-                    <a class="dropdown-item" href="#">Edit/Remove remove</a>
+                    <a class="dropdown-item" href="/events/create">Add event</a>
+                    <a class="dropdown-item" href="/events/page=1">Edit/Remove event</a>
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header">Front Banner</h6>
                     <a class="dropdown-item" href="/cms/banner/edit">Edit banner</a>

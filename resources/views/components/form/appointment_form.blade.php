@@ -8,6 +8,7 @@
 			<div class='form-group col-sm-12 col-md-12 col-lg-12'>
 				{{Form::label('email', 'email')}}
 				{{Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'example@example.com'])}}
+				{{ Form::hidden('art_id', $art[0]->id) }}
 			</div>
 		</div>
 		<div class='row'>

@@ -16,7 +16,12 @@
 			<div>Dimensions: {{$art[0]->dimensions}} (cm)</div>
 			<div>Medium: {{$art[0]->medium}}</div>
 			<div class="spacer"></div>
-			{!!Form::open(['action' => 'ImsController@artist_post', 'method' => 'POST', 'enctype' => 'multipart/form-data'])!!}
+			@if(session()->has('message'))
+				<div class="alert alert-success">
+				    {{ session()->get('message') }}
+				</div>
+			@endif
+			{!!Form::open(array('route' => 'appointments.store'))!!}
     			@include('components.form.appointment_form')
   			{!!Form::close()!!}
 

@@ -2,10 +2,10 @@
 
 @section('content')
   <div class="spacer"></div>
-  @if(isset($event))
+  @if(!isset($event))
   <h2 class="heading">IMS Add Event</h2>
   @endif
-  @if(!isset($event))
+  @if(isset($event))
   <h2 class="heading">IMS Edit Event</h2>
   @endif
   <div class="spacer"></div>
@@ -20,7 +20,7 @@
     {!!Form::close()!!}
   @endif
 @if(isset($event))
-    {!!Form::open(array('route' => ['events.update', $event[0]->id], 'files' => true, 'method' => 'PUT'))!!}
+    {!!Form::open(array('route' => ['events.update', $event], 'files' => true, 'method' => 'PUT'))!!}
       @include('components.form.event_add_form')
     {!!Form::close()!!}
   @endif

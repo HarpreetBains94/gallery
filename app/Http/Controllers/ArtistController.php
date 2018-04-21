@@ -11,7 +11,7 @@ use Image;
 class ArtistController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth', ['except'=>['page_show', 'art_show']]);
+        $this->middleware('auth', ['except'=>['show']]);
     }
 
 
