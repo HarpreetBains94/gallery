@@ -10,27 +10,29 @@
     </tr>
   </thead>
   <tbody>
-    @foreach ($artists as $artist)
-      <tr>
-        <td>
-          <a href="/artists/{{$artist->id}}/edit">
-            <button type="button" class="btn btn-info">
-              <span class="glyphicon glyphicon-search"></span> Edit
-            </button>
-          </a>
-        </td>
-        <td>
-          {!! Form::open(['route' => ['artists.destroy', $artist->id], 'method' => 'DELETE']) !!}
+    @if(!empty($artists))
+      @foreach ($artists as $artist)
+        <tr>
+          <td>
+            <a href="/artists/{{$artist->id}}/edit">
+              <button type="button" class="btn btn-info">
+                <span class="glyphicon glyphicon-search"></span> Edit
+              </button>
+            </a>
+          </td>
+          <td>
+            {!! Form::open(['route' => ['artists.destroy', $artist->id], 'method' => 'DELETE']) !!}
 
-            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+              {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 
-          {!! Form::close() !!}
-        </td>
-        <td>{{$artist->name}}</td>
-        <td><img src='\storage\media\artist_images\{{ $artist->image_path }}' class="img-fluid"></td>
-        <td><div style="height:100px; overflow-x:hidden">{{$artist->bio}}</div></td>
-      </tr>
-    @endforeach
+            {!! Form::close() !!}
+          </td>
+          <td>{{$artist->name}}</td>
+          <td><img src='\storage\media\artist_images\{{ $artist->image_path }}' class="img-fluid"></td>
+          <td><div style="height:100px; overflow-x:hidden">{{$artist->bio}}</div></td>
+        </tr>
+      @endforeach
+    @endif
   </tbody>
 </table>
 </div>

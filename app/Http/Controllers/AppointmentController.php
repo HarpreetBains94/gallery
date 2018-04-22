@@ -33,7 +33,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        return view('welcome');
+        return redirect('/');
     }
 
     /**
@@ -68,7 +68,7 @@ class AppointmentController extends Controller
      */
     public function show(Appointment $appointment)
     {
-        return view('welcome');
+        return redirect('/');
     }
 
     /**

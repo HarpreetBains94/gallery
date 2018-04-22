@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSearchesTable extends Migration
+class CreateBannersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateSearchesTable extends Migration
      */
     public function up()
     {
-        Schema::create('searches', function (Blueprint $table) {
+        Schema::create('banners', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('artist_name')->nullable();
-            $table->string('medium')->nullable();
-            $table->boolean('sale_items');
-            $table->string('email');
-            $table->engine = 'InnoDB';
+            $table->string('image');
+            $table->string('title');
+            $table->text('text');
         });
     }
 
@@ -30,6 +28,6 @@ class CreateSearchesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('searches');
+        Schema::dropIfExists('banners');
     }
 }

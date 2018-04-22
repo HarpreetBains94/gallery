@@ -46,6 +46,7 @@
                     <h6 class="dropdown-header">Artists</h6>
                     <a class="dropdown-item" href="/artists/create">Add artist</a>
                     <a class="dropdown-item" href="/artists/page=1">Edit/Remove artist</a>
+                    <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header">Appointments</h6>
                     <a class="dropdown-item" href="/appointments/page=1">Edit/Remove appointments</a>
                 </div>
@@ -58,7 +59,7 @@
                     <a class="dropdown-item" href="/events/page=1">Edit/Remove event</a>
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header">Front Banner</h6>
-                    <a class="dropdown-item" href="/cms/banner/edit">Edit banner</a>
+                    <a class="dropdown-item" href="/banner/edit">Edit banner</a>
                 </div>
             </li>
 

@@ -16,33 +16,35 @@
     </tr>
   </thead>
   <tbody>
-    @foreach ($arts as $art)
-      <tr>
-        <td>
-          <a href="/arts/{{$art->id}}/edit">
-            <button type="button" class="btn btn-info">
-              <span class="glyphicon glyphicon-search"></span> Edit
-            </button>
-          </a>
-        </td>
-        <td>
-          {!! Form::open(['route' => ['arts.destroy', $art->id], 'method' => 'DELETE']) !!}
+    @if(!empty($arts))
+      @foreach ($arts as $art)
+        <tr>
+          <td>
+            <a href="/arts/{{$art->id}}/edit">
+              <button type="button" class="btn btn-info">
+                <span class="glyphicon glyphicon-search"></span> Edit
+              </button>
+            </a>
+          </td>
+          <td>
+            {!! Form::open(['route' => ['arts.destroy', $art->id], 'method' => 'DELETE']) !!}
 
-            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+              {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 
-          {!! Form::close() !!}
-        </td>
-        <td>{{$art->title}}</td>
-        <td>{{\DB::table('artists')->where('id', $art->artist_id)->get()[0]->name}}</td>
-        <td><img src='\storage\media\test_images\{{ $art->image_path }}' class="img-fluid"></td>
-        <td>{{$art->medium}}</td>
-        <td>{{$art->dimensions}}</td>
-        <td>{{$art->price}}</td>
-        <td>{{$art->on_sale}}</td>
-        <td>{{$art->creation_date}}</td>
-        <td><div style="height:100px; overflow-x:hidden">{{$art->description}}</div></td>
-      </tr>
-    @endforeach
+            {!! Form::close() !!}
+          </td>
+          <td>{{$art->title}}</td>
+          <td>{{\DB::table('artists')->where('id', $art->artist_id)->get()[0]->name}}</td>
+          <td><img src='\storage\media\test_images\{{ $art->image_path }}' class="img-fluid"></td>
+          <td>{{$art->medium}}</td>
+          <td>{{$art->dimensions}}</td>
+          <td>{{$art->price}}</td>
+          <td>{{$art->on_sale}}</td>
+          <td>{{$art->creation_date}}</td>
+          <td><div style="height:100px; overflow-x:hidden">{{$art->description}}</div></td>
+        </tr>
+      @endforeach
+    @endif
   </tbody>
 </table>
 </div>

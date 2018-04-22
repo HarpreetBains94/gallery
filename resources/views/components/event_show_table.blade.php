@@ -11,28 +11,30 @@
     </tr>
   </thead>
   <tbody>
-    @foreach ($events as $event)
-      <tr>
-        <td>
-          <a href="/events/{{$event->id}}/edit">
-            <button type="button" class="btn btn-info">
-              <span class="glyphicon glyphicon-search"></span> Edit
-            </button>
-          </a>
-        </td>
-        <td>
-          {!! Form::open(['route' => ['events.destroy', $event->id], 'method' => 'DELETE']) !!}
+    @if(!empty($events))
+      @foreach ($events as $event)
+        <tr>
+          <td>
+            <a href="/events/{{$event->id}}/edit">
+              <button type="button" class="btn btn-info">
+                <span class="glyphicon glyphicon-search"></span> Edit
+              </button>
+            </a>
+          </td>
+          <td>
+            {!! Form::open(['route' => ['events.destroy', $event->id], 'method' => 'DELETE']) !!}
 
-            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+              {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 
-          {!! Form::close() !!}
-        </td>
-        <td>{{$event->title}}</td>
-        <td>{{$event->price}}</td>
-        <td>{{$event->date}}</td>
-        <td><div style="height:100px; overflow-x:hidden">{{$event->description}}</div></td>
-      </tr>
-    @endforeach
+            {!! Form::close() !!}
+          </td>
+          <td>{{$event->title}}</td>
+          <td>{{$event->price}}</td>
+          <td>{{$event->date}}</td>
+          <td><div style="height:100px; overflow-x:hidden">{{$event->description}}</div></td>
+        </tr>
+      @endforeach
+    @endif
   </tbody>
 </table>
 </div>

@@ -34,9 +34,11 @@
 				{{Form::label('medium', 'Medium')}}
 				{{Form::select('medium', array('painting' => 'Painting', 'photography' => 'Photography', 'sculpture' => 'Sculpture'), $art[0]->medium, ['class' => 'form-control'])}}
 			</div>
-		</div>
-		<div class='row'>
-			<div>
+			<div class='form-group col-sm-12 col-md-6 col-lg-6'>
+				{{Form::label('sale', 'On sale')}}
+				{{Form::checkbox('sale', 'true', ['class' => 'form-control'])}}
+			</div>
+			<div class='form-group col-sm-12 col-md-6 col-lg-6'>
 				{{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
 			</div>
 		</div>

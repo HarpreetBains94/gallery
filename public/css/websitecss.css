@@ -69,17 +69,22 @@ body{
 }
 
 .spacer_footer{
-	height: 100px;
+	height: 300px;
 }
 
 .showroomImage{
 	margin-top: 15px;
 	margin-bottom: 15px;
+	position: relative;
+    float: left;
+
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
 }
 
 #welcome-jumbo{
 	height: 40vh;
-	background-image: url("http://pawprintnews.com/wp-content/uploads/2016/09/Art.jpg");
 	background-size: cover;
 	font-size: 3em !important;
 	color: white !important;
@@ -264,3 +269,8 @@ body{
 			padding: 10px 0px 9px;
 		}
 	}
+
+.center{
+	margin: auto;
+	padding: auto;
+}
