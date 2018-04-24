@@ -36,29 +36,26 @@ class ArtistController extends Controller
     }
 
     public function store(Request $request){
-        $this->validate($request, [
-            'name' => 'required',
-            'image' => 'image|required|max:1999',
-            'bio' => 'required',
+        //Validating against rules set in model
+        $artist = new Artist;
+        $this->validate($request, $artist->getRules());
 
-        ]);
 
-        //creating new filename for storage.
+        //creating new filename and storing file
         $image = $request->file('image');
         $fileName = time() . '.' . $image->getClientOriginalExtension();
         $location = public_path('storage/media/artist_images/' . $fileName);
         Image::make($image)->save($location);
 
-        //storing file.
 
-
-        $artist = new Artist;
+        //Adding form data to model instance and savinf it to the database
         $artist->name = $request->input('name');
         $artist->image_path = $fileName;
         $artist->bio = $request->input('bio');
-
         $artist->save();
 
+
+        //Redirecting back to previous view with success message
         return redirect()->back()->with('message', 'Artist added successfully');
     }
 
