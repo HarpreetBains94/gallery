@@ -6,7 +6,9 @@
 <div class="spacer"></div>
 <div class="container">
 	<div class="subheading">{{$event->title}}</div>
+	<div class="spacer"></div>
 	<div>Price: £{{$event->price}}</div>
+	<div class="spacer"></div>
 	<div>{{$event->description}}</div>
 </div>
 	

@@ -62,21 +62,26 @@ class ArtistController extends Controller
     public function update(Request $request, $id){
         $this->validate($request, [
             'name' => 'required',
-            'image' => 'image|required|max:1999',
+            'image' => 'image|max:1999',
             'bio' => 'required',
 
         ]);
+        $artist = Artist::find($id);
 
         //creating new filename for storage.
-        $image = $request->file('image');
-        $fileName = time() . '.' . $image->getClientOriginalExtension();
-        $location = public_path('storage/media/artist_images/' . $fileName);
-        Image::make($image)->save($location);
+        $fileName = $artist->image_path;
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('storage/media/artist_images/' . $fileName);
+            Image::make($image)->save($location);
+        }
+      
 
         //storing file.
 
 
-        $artist = Artist::find($id);
+
         $artist->name = $request->input('name');
         $artist->image_path = $fileName;
         $artist->bio = $request->input('bio');

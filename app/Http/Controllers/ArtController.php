@@ -116,7 +116,7 @@ class ArtController extends Controller
             'price' => 'required',
             'dimensions' => 'required',
             'date' => 'required',
-            'image' => 'image|required|max:1999',
+            'image' => 'image|max:1999',
             'description' => 'required',
             'medium' => 'required'
 
@@ -125,20 +125,23 @@ class ArtController extends Controller
         //creating new filename for storage.
 
 
+        $art = Art::find($id);
+        $fileName = $art->image_path;
+        $fileName2 = $art->thumbnail;
 
-        $image = $request->file('image');
-        $fileName = time() . '.' . $image->getClientOriginalExtension();
-        $location = public_path('storage/media/test_images/' . $fileName);
-        Image::make($image)->save($location);
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('storage/media/test_images/' . $fileName);
+            Image::make($image)->save($location);
 
-        $image2 = $request->file('image');
-        $fileName2 = time() . '.' . $image->getClientOriginalExtension();
-        $location2 = public_path('storage/media/test_images_thumbnails/' . $fileName);
-        $img = Image::make($image)->crop(550, 440)->save($location2);
-
+            $image2 = $request->file('image');
+            $fileName2 = time() . '.' . $image->getClientOriginalExtension();
+            $location2 = public_path('storage/media/test_images_thumbnails/' . $fileName);
+            $img = Image::make($image)->crop(550, 440)->save($location2);
+        }
         //storing file.
 
-        $art = Art::find($id);
         $art->title = $request->input('title');
         $art->artist_id = $request->input('artist');
         $art->image_path = $fileName;
